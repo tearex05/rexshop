@@ -14,7 +14,10 @@ function Me() {
 	}, [id])
 	const deleteUser = () => {
 		axios.delete(`https://rexshop.onrender.com/auth/me/delete/${user.id}`)
-		.then(res => navigate("/rexshop"))
+		.then(res => {
+			localStorage.removeItem("user");
+			navigate("/rexshop")
+		})
 	}
 	if(user?.id != id){
 		return (
