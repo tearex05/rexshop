@@ -100,19 +100,12 @@ function Nav() {
 							{items.length}
 						</div>
 					</Link>
-					{user[0]?.image ? (
+					{user && (
 						<Link
-							to={`/rexshop/me/${user[0]?.id}`}
-							style={{ backgroundImage: `url(${user[0]?.image})` }}
+							to={`/rexshop/me/${user[0].id}`}
+							style={{ backgroundImage: `url(${user[0].image})` }}
 							className="bg h-9 w-9 ml-5 border-white border-2 rounded-full "
 						></Link>
-					) : (
-						<Link
-							to={`/rexshop/me/${user[0]?.id}`}
-							className="bg-main rounded-full text-center flex items-center justify-center ml-5 w-9 h-9 font-bold border-white border-2"
-						>
-							{user?.name?.charAt(0)}
-						</Link>
 					)}
 				</div>
 			</div>
