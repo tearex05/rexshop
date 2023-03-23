@@ -34,7 +34,6 @@ function Signin() {
 				.then((res) => {
 					setFormData({ ...formData, btn: "SignIn" });
 					localStorage.setItem("user", JSON.stringify(res.data));
-					console.log(res.data)
 				})
 				.catch((err) => setFormData({...formData, error: err.response.data}));
 		}

@@ -102,8 +102,8 @@ function Nav() {
 					</Link>
 					{user && (
 						<Link
-							to={`/rexshop/me/${user[0].id}`}
-							style={{ backgroundImage: `url(${user[0].image})` }}
+							to={`/rexshop/me/${user.id}`}
+							style={{ backgroundImage: `url(${user.image})` }}
 							className="bg h-9 w-9 ml-5 border-white border-2 rounded-full "
 						></Link>
 					)}
