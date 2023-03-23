@@ -21,10 +21,10 @@ function Home() {
 	};
 	useEffect(() => {
 		axios
-			.get("http://localhost:5000/category/electronics")
+			.get("https://rexshop.onrender.com/category/electronics")
 			.then((res) => setElectronics(res.data));
 		axios
-			.get("http://localhost:5000/category/clothes")
+			.get("https://rexshop.onrender.com/category/clothes")
 			.then((res) => setClothes(res.data));
 	});
 	return (

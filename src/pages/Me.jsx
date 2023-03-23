@@ -8,11 +8,11 @@ function Me() {
 	const {id} = useParams()
 	const [user, setUser] = useState({})
 	useEffect(() => {
-		axios.get(`http://localhost:5000/auth/me/${id}`)
+		axios.get(`https://rexshop.onrender.com/auth/me/${id}`)
 		.then(res => setUser(res.data))
 	}, [id])
 	const deleteUser = () => {
-		axios.delete(`http://localhost:5000/auth/me/delete/${user.id}`)
+		axios.delete(`https://rexshop.onrender.com/auth/me/delete/${user.id}`)
 	}
 	if(user?.id != id){
 		return (

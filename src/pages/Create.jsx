@@ -39,7 +39,7 @@ function Create() {
 			data.append("creator", formData.creator);
 			data.append("info", formData.info);
 			data.append("image", formData.image);
-			axios.post("http://localhost:5000/createitem", data).then((res) => {
+			axios.post("https://rexshop.onrender.com/createitem", data).then((res) => {
 				setFormData({ ...formData, btn: "Submit" });
 				navigate("/rexshop");
 			});

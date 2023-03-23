@@ -16,10 +16,10 @@ function ItemPage() {
 	const [item, setItem] = useState({})
 	let isInCart = items.filter(i => i.id === item.id)
 	useEffect(() => {
-		axios.get(`http://localhost:5000/item/${id}`).then(res => setItem(res.data))
+		axios.get(`https://rexshop.onrender.com/item/${id}`).then(res => setItem(res.data))
 	})
 	const deleteItem = () => {
-		axios.delete(`http://localhost:5000/deleteitem/${item.id}`)
+		axios.delete(`https://rexshop.onrender.com/deleteitem/${item.id}`)
 			.then(res => navigate("/rexshop"))
 	}
 	if(!item.id){

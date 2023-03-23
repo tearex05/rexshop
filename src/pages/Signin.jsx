@@ -30,7 +30,7 @@ function Signin() {
 				"password": formData.pass,
 			};
 			axios
-				.post("http://localhost:5000/auth/signin", data)
+				.post("https://rexshop.onrender.com/auth/signin", data)
 				.then((res) => {
 					setFormData({ ...formData, btn: "SignIn" });
 					localStorage.setItem("user", JSON.stringify(res.data));

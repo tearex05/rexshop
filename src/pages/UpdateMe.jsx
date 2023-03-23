@@ -16,7 +16,7 @@ function UpdateMe() {
 		btn: "Submit"
 	})
 	useEffect(() => {
-		axios.get(`http://localhost:5000/auth/me/${id}`)
+		axios.get(`https://rexshop.onrender.com/auth/me/${id}`)
 		.then(res => setUser({...user, id:res.data.id, name: res.data.name, email: res.data.email, image: res.data.image}))
 		.catch(err => setUser({...user, error: err}))
 	}, [id])
@@ -40,7 +40,7 @@ function UpdateMe() {
 			data.append("email", user.email);
 			data.append("password", user.pass);
 			data.append("image", user.image);
-			axios.put(`http://localhost:5000/auth/updateuser/${user.id}`, data).then((res) => {
+			axios.put(`https://rexshop.onrender.com/auth/updateuser/${user.id}`, data).then((res) => {
 				setUser({ ...user, btn: "Submit" });
 				navigate("/rexshop");
 			});

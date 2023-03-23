@@ -8,7 +8,7 @@ function SearchPage() {
 	const [allItems, setAllItems] = useState([])
 	const [items, setItems] = useState([])
 	useEffect(() => {
-		axios.get("http://localhost:5000/items")
+		axios.get("https://rexshop.onrender.com/items")
 			.then(res => setAllItems(res.data));
 		setItems(allItems.filter(i => i.name.toLowerCase().includes(searchString.toLowerCase())))
 	} ,[searchString])

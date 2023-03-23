@@ -42,7 +42,7 @@ function Signup() {
 			data.append("email", formData.email);
 			data.append("password", formData.password);
 			axios
-				.post("http://localhost:5000/auth/signup", data)
+				.post("https://rexshop.onrender.com/auth/signup", data)
 				.then((res) => {
 					setFormData({ ...formData, btn: "SignUp" });
 					localStorage.setItem("user", JSON.stringify(res.data))

@@ -7,7 +7,7 @@ function Update() {
 	let user = JSON.parse(localStorage.getItem("user"));
 	const {id} = useParams()
 	useEffect(() => {
-		axios.get(`http://localhost:5000/item/${id}`)
+		axios.get(`https://rexshop.onrender.com/item/${id}`)
 		.then(res => {
 			setFormData({...formData, id: res.data.id, name: res.data.name, price: res.data.price, category: res.data.category, info: res.data.info, creator: res.data.creator})
 		})
@@ -46,7 +46,7 @@ function Update() {
 			data.append("creator", formData.creator);
 			data.append("info", formData.info);
 			data.append("image", formData.image);
-			axios.put(`http://localhost:5000/updateitem/${formData.id}`, data).then((res) => {
+			axios.put(`https://rexshop.onrender.com/updateitem/${formData.id}`, data).then((res) => {
 				setFormData({ ...formData, btn: "Submit" });
 				navigate("/rexshop");
 			});

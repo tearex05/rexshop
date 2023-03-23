@@ -8,7 +8,7 @@ function CategoryPage() {
 	const { category } = useParams();
 	const [items, setItems] = useState([]);
 	useEffect(() => {
-		axios.get(`http://localhost:5000/category/${category}`).then((res) => {
+		axios.get(`https://rexshop.onrender.com/category/${category}`).then((res) => {
 			setItems(res.data);
 			console.log(res.data);
 		});
