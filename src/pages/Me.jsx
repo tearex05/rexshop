@@ -1,10 +1,11 @@
 import {useState, useEffect} from 'react'
 import axios from "axios"
-import {useParams, Link} from "react-router-dom"
+import {useParams, Link, useNavigate} from "react-router-dom"
 import {BiPencil} from "react-icons/bi"
 import {RiDeleteBinLine} from "react-icons/ri"
 
 function Me() {
+	const navigate = useNavigate()
 	const {id} = useParams()
 	const [user, setUser] = useState({})
 	useEffect(() => {
@@ -13,6 +14,7 @@ function Me() {
 	}, [id])
 	const deleteUser = () => {
 		axios.delete(`https://rexshop.onrender.com/auth/me/delete/${user.id}`)
+		.then(res => navigate("/rexshop"))
 	}
 	if(user?.id != id){
 		return (
