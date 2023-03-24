@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import axios from "axios"
 import {useParams, Link, useNavigate} from "react-router-dom"
+import Bg from "../assets/form.png"
 
 function UpdateMe() {
 	const navigate = useNavigate()
@@ -17,7 +18,7 @@ function UpdateMe() {
 	})
 	useEffect(() => {
 		axios.get(`https://rexshop.onrender.com/auth/me/${id}`)
-		.then(res => setUser({...user, id:res.data.id, name: res.data.name, email: res.data.email, image: res.data.image}))
+		.then(res => setUser({...user, id:res.data.id, name: res.data.name, email: res.data.email}))
 		.catch(err => setUser({...user, error: err}))
 	}, [id])
 	const changeHandler = (e) => {
@@ -35,17 +36,19 @@ function UpdateMe() {
 			setUser({ ...user, error: "Plz fill every field" });
 		} else {
 			setUser({...user, btn: "Plz Wait..."})
-			let data = new user();
+			let data = new FormData();
 			data.append("name", user.name);
 			data.append("email", user.email);
 			data.append("password", user.pass);
 			data.append("image", user.image);
+
 			axios.put(`https://rexshop.onrender.com/auth/updateuser/${user.id}`, data).then((res) => {
 				setUser({ ...user, btn: "Submit" });
 				navigate("/rexshop");
 			});
 		}
-	};
+	}
+	console.log(user)
 	if(!user.id){
 		return (
 			<div className="w-screen h-screen flex items-center justify-center text-center">
@@ -64,10 +67,10 @@ function UpdateMe() {
 		<div className="w-full min-h-screen bg-gradient-to-br from-white to-gray-300 flex flex-col items-center justify-center">
 			<h1 className="font-bold text-3xl mt-20">Update Your Profile</h1>
 			<form
-				style={{backgroundImage: `url(${user.image})`}}
-				className="flex flex-col items-center mt-6 shadow-2xl rounded-2xl p-5 w-2/3 max-w-2xl bg-white bg"
+				className="flex flex-col items-center mt-6 shadow-2xl rounded-2xl p-5 w-2/3 max-w-2xl bg-white"
 				onSubmit={submitHandler}
 			>
+				<label htmlFor="name">Name:</label>
 				<input
 					id="name"
 					type="text"
@@ -77,6 +80,7 @@ function UpdateMe() {
 					placeholder="Enter user's name"
 					className="border-2 border-black w-10/12 max-w-4xl p-2 mb-4 bg-white"
 				/>
+				<label htmlFor="email">Email:</label>
 				<input
 					id="email"
 					type="email"
@@ -86,6 +90,7 @@ function UpdateMe() {
 					placeholder="Enter user's email"
 					className="border-2 border-black w-10/12 max-w-4xl p-2 mb-4 bg-white"
 				/>
+				<label htmlFor="pass">Password:</label>
 				<input
 					id="pass"
 					type="password"
@@ -95,6 +100,7 @@ function UpdateMe() {
 					placeholder="Enter user's password"
 					className="border-2 border-black w-10/12 max-w-4xl p-2 mb-4 bg-white"
 				/>
+				<label htmlFor="pass2">Confirm Your Password:</label>
 				<input
 					id="pass2"
 					type="password"
@@ -104,6 +110,7 @@ function UpdateMe() {
 					placeholder="reEnter user's password"
 					className="border-2 border-black w-10/12 max-w-4xl p-2 mb-4 bg-white"
 				/>
+				<label htmlFor="image">Image:</label>
 				<input
 					id="image"
 					type="file"

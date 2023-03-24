@@ -29,7 +29,7 @@ function Create() {
 		) {
 			setFormData({ ...formData, error: "Plz fill every field" });
 		} else if(formData.image.size >= 3000000){
-			setFormData({...formData, error: "Image is too big"})
+			setFormData({...formData, error: "Image size should be < 3mb"})
 		} else {
 			setFormData({...formData, btn: "Plz Wait..."})
 			let data = new FormData();
@@ -45,7 +45,6 @@ function Create() {
 			});
 		}
 	};
-	console.log(formData.image.size)
 	if (!user) {
 		return (
 			<div className="w-screen h-screen overflow-hidden flex items-center justify-center text-center">
