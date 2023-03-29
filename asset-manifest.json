@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/rexshop/static/css/main.31fb75c4.css",
-    "main.js": "/rexshop/static/js/main.ef06d28a.js",
+    "main.js": "/rexshop/static/js/main.d5674eeb.js",
     "static/media/cars.jpg": "/rexshop/static/media/cars.6b2f89adbb8c9b06b201.jpg",
     "static/media/food.jpg": "/rexshop/static/media/food.c0c92e8f20ed157e8aca.jpg",
     "static/media/tech.jpg": "/rexshop/static/media/tech.3a1ee70566ab93c1f6ef.jpg",
@@ -13,10 +13,10 @@
     "static/media/laptops.png": "/rexshop/static/media/laptops.e77315eb3d68f64af357.png",
     "index.html": "/rexshop/index.html",
     "main.31fb75c4.css.map": "/rexshop/static/css/main.31fb75c4.css.map",
-    "main.ef06d28a.js.map": "/rexshop/static/js/main.ef06d28a.js.map"
+    "main.d5674eeb.js.map": "/rexshop/static/js/main.d5674eeb.js.map"
   },
   "entrypoints": [
     "static/css/main.31fb75c4.css",
-    "static/js/main.ef06d28a.js"
+    "static/js/main.d5674eeb.js"
   ]
 }
