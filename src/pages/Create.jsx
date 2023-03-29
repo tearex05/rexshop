@@ -8,7 +8,7 @@ function Create() {
 	let user = JSON.parse(localStorage.getItem("user"));
 	const [formData, setFormData] = useState({
 		name: "",
-		price: 0,
+		price: "",
 		category: "electronics",
 		creator: user?.email,
 		info: "",
@@ -86,6 +86,7 @@ function Create() {
 					id="price"
 					type="number"
 					name="price"
+					placeholder="0"
 					value={formData.price}
 					onChange={changeHandler}
 					className="border-2 border-black w-10/12 max-w-4xl p-2 mb-4"

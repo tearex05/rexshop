@@ -16,7 +16,7 @@ function Update() {
 	const [formData, setFormData] = useState({
 		id: "",
 		name: "",
-		price: 0,
+		price: "",
 		category: "",
 		creator: "",
 		info: "",
@@ -81,6 +81,7 @@ function Update() {
 					id="price"
 					type="number"
 					name="price"
+					placeholder="0"
 					value={formData.price}
 					onChange={changeHandler}
 					className="border-2 border-black w-10/12 max-w-4xl p-2 mb-4"
