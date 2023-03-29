@@ -55,7 +55,7 @@ function UpdateMe() {
 			</div>
 		)
 	}
-	if(user?.id !== id){
+	if(user?.id != id){
 		return (
 			<div className="w-screen h-screen flex items-center justify-center text-center">
 				<h1 className="text-3xl">...</h1>

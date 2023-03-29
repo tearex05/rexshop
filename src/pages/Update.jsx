@@ -52,7 +52,7 @@ function Update() {
 			</div>
 		)
 	}
-	if(formData.creator !== user[0].email){
+	if(formData.creator !== user.email){
 		return (
 			<div className="w-screen h-screen flex items-center justify-center text-center">
 				<h1 className="text-3xl">...</h1>
