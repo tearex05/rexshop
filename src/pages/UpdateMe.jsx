@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import axios from "axios"
-import {useParams, Link, useNavigate} from "react-router-dom"
-import Bg from "../assets/form.png"
+import {useParams, useNavigate} from "react-router-dom"
+import FileBase64 from "react-file-base64";
 
 function UpdateMe() {
 	const navigate = useNavigate()
@@ -36,19 +36,18 @@ function UpdateMe() {
 			setUser({ ...user, error: "Plz fill every field" });
 		} else {
 			setUser({...user, btn: "Plz Wait..."})
-			let data = new FormData();
-			data.append("name", user.name);
-			data.append("email", user.email);
-			data.append("password", user.pass);
-			data.append("image", user.image);
-
+			let data = {
+				name: user.name,
+				email: user.email,
+				image: user.image,
+				password: user.pass
+			}
 			axios.put(`https://rexshop.onrender.com/auth/updateuser/${user.id}`, data).then((res) => {
 				setUser({ ...user, btn: "Submit" });
 				navigate("/rexshop");
 			});
 		}
 	}
-	console.log(user)
 	if(!user.id){
 		return (
 			<div className="w-screen h-screen flex items-center justify-center text-center">
@@ -56,7 +55,7 @@ function UpdateMe() {
 			</div>
 		)
 	}
-	if(user?.id != id){
+	if(user?.id !== id){
 		return (
 			<div className="w-screen h-screen flex items-center justify-center text-center">
 				<h1 className="text-3xl">...</h1>
@@ -111,16 +110,16 @@ function UpdateMe() {
 					className="border-2 border-black w-10/12 max-w-4xl p-2 mb-4 bg-white"
 				/>
 				<label htmlFor="image">Image:</label>
-				<input
+				<span
+					className="border-2 border-black w-10/12 max-w-4xl p-2 mb-4"
 					id="image"
-					type="file"
 					name="image"
-					onChange={(e) =>
-						setUser({ ...user, image: e.target.files[0] })
-					}
-					accept=".png, .jpg, .jpeg"
-					className="border-2 border-black w-10/12 max-w-4xl p-2 mb-4 bg-white"
-				/>
+				>
+					<FileBase64
+						multiple={false}
+						onDone={({base64}) => setUser({...user, image: base64})}
+					/>
+				</span>
 				<p className="text-red-500">{user.error}</p>
 				<input
 					type="submit"

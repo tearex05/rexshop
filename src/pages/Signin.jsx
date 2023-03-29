@@ -25,8 +25,12 @@ function Signin() {
 			setFormData({ ...formData, error: "Please fill every field" });
 		} else {
 			setFormData({ ...formData, btn: "Plz Wait..." });
+			let data = {
+				"email": formData.email,
+				"password": formData.pass,
+			};
 			axios
-				.post("https://rexshop.onrender.com/auth/signin", formData)
+				.post("https://rexshop.onrender.com/auth/signin", data)
 				.then((res) => {
 					setFormData({ ...formData, btn: "SignIn" });
 					localStorage.setItem("user", JSON.stringify(res.data));

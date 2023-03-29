@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import axios from "axios"
 import {useParams, useNavigate} from "react-router-dom"
+import FileBase64 from "react-file-base64";
 
 function Update() {
 	const navigate = useNavigate();
@@ -12,7 +13,6 @@ function Update() {
 			setFormData({...formData, id: res.data.id, name: res.data.name, price: res.data.price, category: res.data.category, info: res.data.info, creator: res.data.creator})
 		})
 	}, [])
-	const [item, setItem] = useState({})
 	const [formData, setFormData] = useState({
 		id: "",
 		name: "",
@@ -39,14 +39,7 @@ function Update() {
 			setFormData({ ...formData, error: "Plz fill every field" });
 		} else {
 			setFormData({...formData, btn: "Plz Wait..."})
-			let data = new FormData();
-			data.append("name", formData.name);
-			data.append("price", formData.price);
-			data.append("category", formData.category);
-			data.append("creator", formData.creator);
-			data.append("info", formData.info);
-			data.append("image", formData.image);
-			axios.put(`https://rexshop.onrender.com/updateitem/${formData.id}`, data).then((res) => {
+			axios.put(`https://rexshop.onrender.com/updateitem/${formData.id}`, formData).then((res) => {
 				setFormData({ ...formData, btn: "Submit" });
 				navigate("/rexshop");
 			});
@@ -59,7 +52,7 @@ function Update() {
 			</div>
 		)
 	}
-	if(formData.creator != user[0].email){
+	if(formData.creator !== user[0].email){
 		return (
 			<div className="w-screen h-screen flex items-center justify-center text-center">
 				<h1 className="text-3xl">...</h1>
@@ -117,17 +110,16 @@ function Update() {
 					<option value="house">House</option>
 				</select>
 				<label htmlFor="picture">Picture:</label>
-				<input
-					id="picture"
-					type="file"
-					name="picture"
-					filename={formData.image}
-					onChange={(e) =>
-						setFormData({ ...formData, image: e.target.files[0] })
-					}
-					accept=".png"
+				<span
 					className="border-2 border-black w-10/12 max-w-4xl p-2 mb-4"
-				/>
+					id="picture"
+					name="picture"
+				>
+					<FileBase64
+						multiple={false}
+						onDone={({base64}) => setFormData({...formData, image: base64})}
+					/>
+				</span>
 				<p className="text-red-500">{formData.error}</p>
 				<input
 					type="submit"

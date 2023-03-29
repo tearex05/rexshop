@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import FileBase64 from "react-file-base64";
 
 function Signup() {
 	let user = JSON.parse(localStorage.getItem("user"));
@@ -36,8 +37,14 @@ function Signup() {
 			setFormData({ ...formData, error: "Passwords don't match" });
 		} else {
 			setFormData({ ...formData, btn: "Plz Wait..." });
+			let data = {
+				name: formData.name,
+				email: formData.email,
+				password: formData.pass,
+				image: formData.image,
+			}
 			axios
-				.post("https://rexshop.onrender.com/auth/signup", formData)
+				.post("https://rexshop.onrender.com/auth/signup", data)
 				.then((res) => {
 					setFormData({ ...formData, btn: "SignUp" });
 					localStorage.setItem("user", JSON.stringify(res.data))
@@ -93,16 +100,16 @@ function Signup() {
 					className="border-2 border-black w-10/12 max-w-4xl p-2 mb-4"
 				/>
 				<label htmlFor="image">Your Profile:</label>
-				<input
-					id="image"
-					type="file"
-					name="image"
-					onChange={(e) =>
-						setFormData({ ...formData, image: e.target.files[0] })
-					}
-					accept=".png, .jpg, .jpeg"
+				<span
 					className="border-2 border-black w-10/12 max-w-4xl p-2 mb-4"
-				/>
+					id="image"
+					name="image"
+				>
+					<FileBase64
+						multiple={false}
+						onDone={({base64}) => setFormData({...formData, image: base64})}
+					/>
+				</span>
 				<p className="text-red-500">{formData.error}</p>
 				<input
 					type="submit"
