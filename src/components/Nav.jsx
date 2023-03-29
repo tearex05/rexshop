@@ -75,7 +75,8 @@ function Nav() {
 				>
 					<GrMenu color="white" />
 				</span>
-				<span className="border border-black rounded-xl pl-3 p-1 flex items-center justify-between w-full mx-3 max-w-4xl bg-white">
+				{location.pathname === "/rexshop/search" ? (
+					<span className="border border-black rounded-xl pl-3 p-1 flex items-center justify-between w-full mx-3 max-w-4xl bg-white">
 					<input
 						type="text"
 						className="w-full self-center  outline-none"
@@ -90,6 +91,14 @@ function Nav() {
 						<BiSearch className="" />
 					</span>
 				</span>
+				) : (
+					<Link
+						to="/rexshop/search"
+						className="text-2xl bg-main1 text-white p-1 rounded-xl cursor-pointer"
+					>
+						<BiSearch className="" />
+					</Link>
+				)}
 				<div className="mx-2 mr-5 flex items-center justify-end w-fit">
 					<Link
 						to="/rexshop/cart"
