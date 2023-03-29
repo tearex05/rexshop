@@ -36,13 +36,8 @@ function Signup() {
 			setFormData({ ...formData, error: "Passwords don't match" });
 		} else {
 			setFormData({ ...formData, btn: "Plz Wait..." });
-			let data = new FormData();
-			data.append("image", formData.image);
-			data.append("name", formData.name);
-			data.append("email", formData.email);
-			data.append("password", formData.password);
 			axios
-				.post("https://rexshop.onrender.com/auth/signup", data)
+				.post("https://rexshop.onrender.com/auth/signup", formData)
 				.then((res) => {
 					setFormData({ ...formData, btn: "SignUp" });
 					localStorage.setItem("user", JSON.stringify(res.data))
