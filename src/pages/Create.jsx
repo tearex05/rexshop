@@ -67,13 +67,6 @@ function Create() {
 	return (
 		<div className="flex flex-col w-full h-full items-center justify-center pt-20 pb-20">
 			<h1 className="text-4xl font-bold">Add An Item</h1>
-			<button
-				onClick={() => {
-					console.log(formData);
-				}}
-			>
-				Test
-			</button>
 			<form
 				className="flex flex-col items-center mt-6 shadow-2xl rounded-2xl p-5 w-2/3 max-w-2xl"
 				onSubmit={submitHandler}
